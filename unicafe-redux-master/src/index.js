@@ -17,8 +17,6 @@ const App = () => {
       type: actionType
     }
   }
-
-
   return (
     <div>
       <button onClick={() => store.dispatch(createAction("GOOD"))}>hyvä</button> 
