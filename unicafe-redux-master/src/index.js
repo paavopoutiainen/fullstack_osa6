@@ -5,18 +5,13 @@ import reducer from './reducer'
 
 const store = createStore(reducer)
 
-const App = () => {
-  /*const good = () => {
-    store.dispatch({
-      type: 'GOOD'
-    })
-  }*/
-
-  const createAction = (actionType) => {
-    return {
-      type: actionType
-    }
+const createAction = (actionType) => {
+  return {
+    type: actionType
   }
+}
+
+const App = () => {
   return (
     <div>
       <button onClick={() => store.dispatch(createAction("GOOD"))}>hyvä</button> 
