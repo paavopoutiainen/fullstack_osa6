@@ -1,16 +1,24 @@
 
-const notificationReducer = (state = "wehere", action) => {
+const notificationReducer = (state = null, action) => {
     switch (action.type){
         case "NOTIFICATION":
             return action.data.str
+        case "EMPTY_NOTIFICATION":
+            return null
         default: return state
     }
 }
 
-const notificationActionCreator = (str) => {
+export const setNotificationActionCreator = (str) => {
     return {
         type: "NOTIFICATION",
         data: { str }
+    }
+}
+
+export const emptyNotificationActionCreator = () => {
+    return {
+        type: "EMPTY_NOTIFICATION"
     }
 }
 
