@@ -2,7 +2,7 @@ import React from 'react';
 import { createVoteAction } from "../reducers/anecdoteReducer"
 
 const AnecdoteList = ({ store }) => {
-    const anecdotes = store.getState()
+    const anecdotes = store.getState().anecdotes
     return (
         <div>
             {anecdotes.sort((a, b) => b.votes - a.votes).map(anecdote =>
