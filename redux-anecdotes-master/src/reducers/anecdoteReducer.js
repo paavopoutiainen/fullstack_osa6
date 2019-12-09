@@ -1,3 +1,5 @@
+
+
 const anecdotesAtStart = [
   'If it hurts, do it more often',
   'Adding manpower to a late software project makes it later!',
@@ -34,6 +36,7 @@ const asObject = (anecdote) => {
 const initialState = anecdotesAtStart.map(asObject)
 
 const anecdoteReducer = (state = initialState, action) => {
+  console.log(action)
   switch (action.type) {
     case "VOTE":
       const id = action.data.id

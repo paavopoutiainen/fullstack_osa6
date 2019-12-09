@@ -4,7 +4,7 @@ const notificationReducer = (state = null, action) => {
         case "NOTIFICATION":
             return action.data.str
         case "EMPTY_NOTIFICATION":
-            return null
+            return ""
         default: return state
     }
 }
