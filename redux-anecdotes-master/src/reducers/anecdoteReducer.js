@@ -16,26 +16,33 @@ export const createVoteAction = (id) => {
 }
 }
 
-export const createAddAnecdoteAction = (anecdote) => {
+export const initializeAnecdotes = (anecdotes) => {
   return {
-    type: "ADD",
-    data: { anecdote }
+    type: "INIT_ANECDOTES",
+    anecdotes
   }
 }
 
-const getId = () => (100000 * Math.random()).toFixed(0)
+export const createAddAnecdoteAction = (anecdote) => {
+  return {
+    type: "ADD",
+    anecdote
+  }
+}
 
-const asObject = (anecdote) => {
+//const getId = () => (100000 * Math.random()).toFixed(0)
+
+/*const asObject = (anecdote) => {
   return {
     content: anecdote,
     id: getId(),
     votes: 0
   }
-}
+}*/
 
-const initialState = anecdotesAtStart.map(asObject)
+//const initialState = anecdotesAtStart.map(asObject)
 
-const anecdoteReducer = (state = initialState, action) => {
+const anecdoteReducer = (state = [], action) => {
   console.log(action)
   switch (action.type) {
     case "VOTE":
@@ -44,8 +51,9 @@ const anecdoteReducer = (state = initialState, action) => {
       const changedAnecdote = {...votedAnecdote, votes: votedAnecdote.votes + 1 }
       return state.map(a => a.id !== changedAnecdote.id ? a : changedAnecdote)
     case "ADD":
-      const anecdoteToBeAdded = asObject(action.data.anecdote)
-      return state.concat(anecdoteToBeAdded)
+      return state.concat(action.anecdote)
+    case "INIT_ANECDOTES":
+      return action.anecdotes
     default: return state
   }
 }
