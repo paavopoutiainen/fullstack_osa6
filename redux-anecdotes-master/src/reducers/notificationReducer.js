@@ -9,12 +9,20 @@ const notificationReducer = (state = null, action) => {
     }
 }
 
-export const setNotificationActionCreator = (str) => {
-    return {
-        type: "NOTIFICATION",
-        data: { str }
+export const setNotificationActionCreator = (str, seconds) => {
+    return async dispatch => {
+        dispatch({
+            type: "NOTIFICATION",
+            data: { str }
+        })
+        setTimeout(() => {
+            dispatch({
+                type: "EMPTY_NOTIFICATION"
+            })
+        }, seconds *1000)
     }
 }
+    
 
 export const emptyNotificationActionCreator = () => {
     return {

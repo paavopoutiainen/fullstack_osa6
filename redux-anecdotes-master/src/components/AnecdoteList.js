@@ -7,11 +7,8 @@ import { connect } from "react-redux"
 const AnecdoteList = (props) => {
     
    const handleVoteClick = (anecdote) => {
-        props.createVoteAction(anecdote.id)
-        props.setNotificationActionCreator(`You voted anecdote "${anecdote.content}"`)
-        setTimeout(() => {
-            props.emptyNotificationActionCreator()
-        }, 5000)
+        props.createVoteAction(anecdote)
+        props.setNotificationActionCreator(`You voted anecdote "${anecdote.content}"`, 10)
     }
     return (
         <div>
